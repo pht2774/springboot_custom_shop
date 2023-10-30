@@ -13,8 +13,15 @@ mainscreen.html
 
 add about.html to describe the shop mission and product
 add AboutUs controller to render about.html view when access from URL
+
 about.html
 ++line 18: add link back to mainscreen.html
 mainscreen.html
 ++line 18: add link to about.html
 
+#E. Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
+
+BootStrapData.java
+++line 58: add condition to check part count and product count (both equal 0) before initializing demo inventory to prevent duplication
+++line 61-103: add demo parts to outsourcedPartRepository
+++line 112-121: add demo products to productRepository
