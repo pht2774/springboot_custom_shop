@@ -26,3 +26,15 @@ BootStrapData.java
 ++line 58: add condition to check part count and product count (both equal 0) before initializing demo inventory to prevent duplication
 ++line 61-103: add demo parts to outsourcedPartRepository
 ++line 112-121: add demo products to productRepository
+
+#F. Add a “Buy Now” button to your product list. Your “Buy Now” button must meet each of the following parameters
+
+add purchaseSuccess.html template to indicate the customer has made a successful purchase
+add purchaseFailed.html template to indicate the customer can't order due to out of stock item
+
+mainscreen.html
+++line 87-89: add "Buy Now" button as a html hidden form input that take the productId of tempProduct and pass the value to the BuyProductController
+
+add BuyProductController.java that display either purchaseSuccess.html or purchaseFailed.html based on product.getInv()
+++line 23-24: check to see if the product is in the database and set it to the product object
+++line 25-31: check condition to see productIvn. If it is greater than 0, decree the productInv by one, save new productInv and display success message. Otherwise, display failure message.
