@@ -45,10 +45,17 @@ public class AddInhousePartController{
             bindingResult.rejectValue("inv","invalid values","must be between minimum and maximum inventory values");
             return "InhousePartForm";
         }
+        else if (part.getInv() < part.getMinIvn()) {
+            bindingResult.rejectValue("inv","invalid values","value cannot be below minimum inventory");
+            return "InhousePartForm";
+        } else if (part.getInv() > part.getMaxInv()) {
+            bindingResult.rejectValue("inv","invalid values","value must not exceed max inventory");
+            return "InhousePartForm";
+        }
         else{
-        InhousePartService repo=context.getBean(InhousePartServiceImpl.class);
-        InhousePart ip=repo.findById((int)part.getId());
-        if(ip!=null)part.setProducts(ip.getProducts());
+            InhousePartService repo=context.getBean(InhousePartServiceImpl.class);
+            InhousePart ip=repo.findById((int)part.getId());
+            if(ip!=null)part.setProducts(ip.getProducts());
             repo.save(part);
 
         return "confirmationaddpart";}

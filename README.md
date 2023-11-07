@@ -77,3 +77,16 @@ AddInhousePartController.java
 ++line 44: add conditional check to call isValid method for part entity to check user entered value
 ++line 45: use bindingResult.rejectValue to display error message to user if values entered is out of range
 
+#H. Add validation for between or at the maximum and minimum fields
+
+AddOutsourcedPartController.java
+++line 48-50: add conditional check to see if the inventory is below the minimum value and display error message for outsourced parts
+++line 51-53: add conditional check to see if the inventory is above the maximum value and display error message for outsourced parts
+
+AddInhousePartController.java
+++line 48-50: add conditional check to see if the inventory is below the minimum value and display error message for in-housed parts
+++line 51-53: add conditional check to see if the inventory is above the maximum value and display error message for in-housed parts
+
+EnufPartsValidator.java
+++line 36: add conditional check for (p.getInv() - 1) < p.getMinIvn() to see if updating a product causes associated parts falling below minimum part inventory value
+++line 37 - 38: add violation constrain to display error message in "inv" field 
