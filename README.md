@@ -96,3 +96,7 @@ EnufPartsValidator.java
 PartTest.java
 ++line 161-167: add unit test for minimum inventory value by calling setMinIvn method with a given value and compare the expected value with getMinIvn method
 ++line 170-176: add unit test for max inventory value by calling setMaxIvn method with a given value and compare the expected value with getMaxIvn method
+
+#J. Remove the class files for any unused validators in order to clean your code
+
+Remove DeletePartValidator for no usage (unused validator)
