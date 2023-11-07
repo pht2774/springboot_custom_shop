@@ -20,6 +20,11 @@ import java.util.Set;
 @DiscriminatorColumn(name="part_type",discriminatorType = DiscriminatorType.INTEGER)
 @Table(name="Parts")
 public abstract class Part implements Serializable {
+
+    @Min(value = 0, message = "Minimum inventory must be equal or greater than 0")
+    int minIvn;
+    @Min(value = 0, message = "Max inventory must be positive")
+    int maxInv;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
@@ -37,6 +42,14 @@ public abstract class Part implements Serializable {
     public Part() {
     }
 
+    public Part(String name, double price, int inv, int minIvn, int maxInv) {
+        this.name = name;
+        this.price = price;
+        this.inv = inv;
+        this.minIvn = minIvn;
+        this.maxInv = maxInv;
+    }
+
     public Part(String name, double price, int inv) {
         this.name = name;
         this.price = price;
@@ -49,6 +62,11 @@ public abstract class Part implements Serializable {
         this.price = price;
         this.inv = inv;
     }
+
+    public int getMinIvn() { return minIvn;}
+    public void setMinIvn(int minIvn){ this.minIvn = minIvn;}
+    public int getMaxInv(){ return maxInv;}
+    public void setMaxInv(int maxInv) { this.maxInv = maxInv;}
 
     public long getId() {
         return id;
@@ -107,4 +125,9 @@ public abstract class Part implements Serializable {
     public int hashCode() {
         return (int) (id ^ (id >>> 32));
     }
+
+    public boolean isValid (int number){
+        return number >= minIvn && number <= maxInv;
+    }
+
 }

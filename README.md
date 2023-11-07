@@ -38,3 +38,42 @@ mainscreen.html
 add BuyProductController.java that display either purchaseSuccess.html or purchaseFailed.html based on product.getInv()
 ++line 23-24: check to see if the product is in the database and set it to the product object
 ++line 25-31: check condition to see productIvn. If it is greater than 0, decree the productInv by one, save new productInv and display success message. Otherwise, display failure message.
+
+#G. Modify the parts to track maximum and minimum inventory
+
+Part.java
+++line 24: enforce inventory minimum is 0
+++line 25: add minIvn field to Part entity
+++line 26: enforce inventory max to be positive
+++line 27: add maxInv field to Part entity
+++line 45-51: add a constructor that accept (String name, double price, int inv, int minIvn, int maxInv) to set up Part object
+++line 66: add getter method to get minIvn from a Part object
+++line 67: add setter method to set minIvn for a Part object
+++line 68: add getter method to get maxIvn from a Part object
+++line 69: add setter method to set maxIvn for a Part object
+++line 129-131: add conditional check (isValid) to see if the user enters the correct inventory values (between minIvn and maxIvn inclusive)
+
+BootStrapData.java
+++line 67-68: set minInv and maxInv values for sample part 1
+++line 78-79: set minInv and maxInv values for sample part 2
+++line 89-90: set minInv and maxInv values for sample part 3
+++line 100-101: set minInv and maxInv values for sample part 4
+++line 111-112: set minInv and maxInv values for sample part 5
+
+InhousePartForm.html
+++line 26-27: add input for user to provide custom minimum and maximum number of an in-housed part's inventory
+
+OutsourcedPartForm.html
+++line 27-28: add input for user to provide custom minimum and maximum number of an out-sourced part's inventory
+
+application.properties
+++line 6: rename the database file to match the local persistence storage
+
+AddOutsourcedPartController.java
+++line 45: add conditional check to call isValid method for part entity to check user entered value
+++line 46: use bindingResult.rejectValue to display error message to user if values entered is out of range
+
+AddInhousePartController.java
+++line 44: add conditional check to call isValid method for part entity to check user entered value
+++line 45: use bindingResult.rejectValue to display error message to user if values entered is out of range
+
