@@ -90,3 +90,9 @@ AddInhousePartController.java
 EnufPartsValidator.java
 ++line 36: add conditional check for (p.getInv() - 1) < p.getMinIvn() to see if updating a product causes associated parts falling below minimum part inventory value
 ++line 37 - 38: add violation constrain to display error message in "inv" field 
+
+#I. Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package
+
+PartTest.java
+++line 161-167: add unit test for minimum inventory value by calling setMinIvn method with a given value and compare the expected value with getMinIvn method
+++line 170-176: add unit test for max inventory value by calling setMaxIvn method with a given value and compare the expected value with getMaxIvn method
